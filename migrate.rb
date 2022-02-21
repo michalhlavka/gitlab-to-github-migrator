@@ -52,11 +52,11 @@ gl_projects.each do |gl_project|
   destination_repo = "#{GH_ORG_NAME}/#{gl_project.name.gsub(' ', '-')}"
   
   # Ensure the GL user is a member of the project we want to export
-  begin Gitlab.add_team_member(gl_project.id, 4, 40)
-    puts "You've been successfully added as a maintainer of this project on GitLab."
-  rescue Gitlab::Error::Conflict => e
-    puts "You are already a member of this project on GitLab."
-  end
+  #begin Gitlab.add_team_member(gl_project.id, 4, 40)
+  #  puts "You've been successfully added as a maintainer of this project on GitLab."
+  #rescue Gitlab::Error::Conflict => e
+  #  puts "You are already a member of this project on GitLab."
+  #end
 
   # Create the repository on GH or show an error
   begin gh_client.create_repository(gl_project.name, organization: GH_ORG_NAME, private: true)
